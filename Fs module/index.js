@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { readFile ,writeFile } from "node:fs/promises";
 
 try {
   const filePath = new URL("./index.html", import.meta.url); // give the path of index.html file
@@ -18,3 +18,7 @@ for (const [key, value] of Object.entries(Data)) {
 }
 
 console.log(contents);
+
+const newfilePath = new URL("./newIndex.html", import.meta.url);
+
+await writeFile(newfilePath,contents) // write to the file if file not present it will create new file
