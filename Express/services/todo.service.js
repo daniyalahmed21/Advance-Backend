@@ -7,6 +7,7 @@ class TodoService {
 
     create(todoText){
         this.todoRepository.insert(todoText)
+        console.log(this)
     }
 
     getOneTodo(id){
