@@ -1,6 +1,3 @@
-Here is the Markdown file for the SQL question based on the provided images:
-
-```markdown
 # SQL Question: Classifying Triangles
 
 Write a query identifying the type of each record in the `TRIANGLES` table using its three side lengths. Output one of the following statements for each record in the table:
@@ -34,7 +31,6 @@ Each row in the table denotes the lengths of each of a triangle's three sides.
 ## Sample Output
 
 ```
-
 Isosceles
 Equilateral
 Scalene
@@ -48,4 +44,3 @@ Not A Triangle
 * Values in the tuple (20, 20, 20) form an Equilateral triangle, because $A = B = C$.
 * Values in the tuple (20, 21, 22) form a Scalene triangle, because $A \neq B \neq C$.
 * Values in the tuple (13, 14, 30) cannot form a triangle because the combined value of sides $A$ and $B$ is not larger than that of side $C$.
-```
