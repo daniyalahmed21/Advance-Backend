@@ -5,7 +5,7 @@ CREATE TABLE Users (
     UserId INT PRIMARY KEY AUTO_INCREMENT,
     Name VARCHAR(50) NOT NULL,
     Email VARCHAR(50) UNIQUE,
-    ConatactNumber VARCHAR(50),
+    ContactNumber VARCHAR(50),
     Bio TEXT,
     UserType ENUM('Host', 'Guest', 'Both'),
     Language VARCHAR(50),
@@ -56,7 +56,7 @@ create TABLE Reviews (
     FOREIGN KEY (UserId) REFERENCES Users(UserId)
 );
 
-INSERT INTO Users (Name, Email, ConatactNumber, Bio, UserType, Language, PasswordHash)
+INSERT INTO Users (Name, Email, ContactNumber, Bio, UserType, Language, PasswordHash)
 VALUES
 ('Alice Johnson', 'alice@example.com', '1234567890', 'Nature lover and host in the mountains.', 'Host', 'English', 'hashed_pwd_1'),
 ('Bob Smith', 'bob@example.com', '0987654321', 'Traveler and photographer.', 'Guest', 'English', 'hashed_pwd_2'),
