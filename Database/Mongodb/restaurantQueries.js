@@ -55,3 +55,28 @@ db.restaurants.find({$and:[{"cuisine" : {$ne :"American"}},{"grades.score" : {$g
 db.restaurants.find({"cuisine" : {$ne :"American"},"grades.score" : {$gt : 70},"address.coord" : {$lt : -65.754168}});
 
 // 13. Write a MongoDB query to find the restaurants which do not prepare any cuisine of 'American' and achieved a grade point 'A' not belongs to the borough Brooklyn. The document must be displayed according to the cuisine in descending order.
+db.restaurants.find({$and:[{"cuisine" : {$ne :"American"}},{"grades.grade" : {$ne : "A"} },{borough:"Brooklyn"}]}).sort({"cuisine":-1});
+
+// 14. Write a MongoDB query to find the restaurant Id, name, borough and cuisine for those restaurants which contain 'Wil' as first three letters for its name.
+db.restaurants.find({$text:{$search:'Wil'}},{restaurant_id:1, name:1, borough:1, cuisine:1,_id:0})
+db.restaurants.find({name:{$regex:/^Wil/}},{restaurant_id:1, name:1, borough:1, cuisine:1,_id:0})
+
+// 15. Write a MongoDB query to find the restaurant Id, name, borough and cuisine for those restaurants which contain 'ces' as last three letters for its name.
+db.restaurants.find({name:{$regex:/ces$/}},{restaurant_id:1, name:1, borough:1, cuisine:1,_id:0})
+
+// 16. Write a MongoDB query to find the restaurant Id, name, borough and cuisine for those restaurants which contain 'Reg' as three letters somewhere in its name.
+db.restaurants.find({name:{$regex:/$Reg$/}},{restaurant_id:1, name:1, borough:1, cuisine:1,_id:0})
+
+// 17. Write a MongoDB query to find the restaurants which belong to the borough Bronx and prepared either American or Chinese dish.
+db.restaurants.find({$and : [{borough:"Bronx"},{ $or: [ { cuisine: "American" }, { cuisine: "Chinese" } ] }]});
+
+// 18. Write a MongoDB query to find the restaurant Id, name, borough and cuisine for those restaurants which belong to the borough Staten Island or Queens or Bronx or Brooklyn.
+db.restaurants.find({"borough" :{$in :["Staten Island","Queens","Bronx","Brooklyn"]}},{restaurant_id:1, name:1, borough:1, cuisine:1});
+
+// 19. Write a MongoDB query to find the restaurant Id, name, borough and cuisine for those restaurants which are not belonging to the borough Staten Island or Queens or Bronx or Brooklyn.
+db.restaurants.find({"borough" :{$nin :["Staten Island","Queens","Bronx","Brooklyn"]}},{restaurant_id:1, name:1, borough:1, cuisine:1});
+
+// 20. Write a MongoDB query to find the restaurant Id, name, borough and cuisine for those restaurants which achieved a score which is not more than 10.
+db.restaurants.find({"grades.score" :{ $not: {$gt : 10}}},{restaurant_id:1, name:1, borough:1, cuisine:1});
+
+
