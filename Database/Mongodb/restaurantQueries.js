@@ -79,4 +79,47 @@ db.restaurants.find({"borough" :{$nin :["Staten Island","Queens","Bronx","Brookl
 // 20. Write a MongoDB query to find the restaurant Id, name, borough and cuisine for those restaurants which achieved a score which is not more than 10.
 db.restaurants.find({"grades.score" :{ $not: {$gt : 10}}},{restaurant_id:1, name:1, borough:1, cuisine:1});
 
+// 21. Write a MongoDB query to find the restaurant Id, name, borough and cuisine for those restaurants which prepared dish except 'American' and 'Chinese' or restaurant's name begins with letter 'Wil'.
+db.restaurants.find({$or:[{"cuisine" :{$nin :["American","Chinese"]}},{name:{$regex:/^Wil/}}]},{restaurant_id:1, name:1, borough:1, cuisine:1});
 
+// Write a MongoDB query to find the restaurant Id, name, and grades for those restaurants which achieved a grade of "A" and scored 11 on an ISODate "2014-08-11T00:00:00Z" among many of survey dates.
+db.restaurants.find(
+    {
+        grades: {
+            $elemMatch: {
+                date: ISODate("2014-08-11T00:00:00Z"),
+                grade: "A",
+                score: 11
+            }
+        }
+    },
+    {
+        restaurant_id: 1,
+        name: 1,
+        grades: 1
+    }
+)
+
+// 23. Write a MongoDB query to find the restaurant Id, name and grades for those restaurants where the 2nd element of grades array contains a grade of "A" and score 9 on an ISODate "2014-08-11T00:00:00Z".
+db.restaurants.find( 
+    { "grades.1.date": ISODate("2014-08-11T00:00:00Z"), 
+      "grades.1.grade":"A" , 
+      "grades.1.score" : 9
+    }, 
+     {"restaurant_id" : 1,"name":1,"grades":1}
+ );
+
+//  24. Write a MongoDB query to find the restaurant Id, name, address and geographical location for those restaurants where 2nd element of coord array contains a value which is more than 42 and upto 52..
+db.restaurants.find(
+    {
+      "address.coord.1": { $gt: 42, $lte: 54 }
+    },
+    {
+      restaurant_id: 1,
+      name: 1,
+      address: 1
+    }
+  );
+
+//   25. Write a MongoDB query to arrange the name of the restaurants in ascending order along with all the columns.
+db.restaurants.find().sort({name:1});
