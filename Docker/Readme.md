@@ -2,7 +2,7 @@
 
 This guide provides essential Docker commands for building, running, and managing containers — ideal for beginners working with Node.js or any containerized app.
 
----
+
 
 ## 📦 1. Build Docker Image
 
@@ -18,7 +18,7 @@ Use `--no-cache` to force rebuild:
 docker build --no-cache -t your-image-name .
 ```
 
----
+
 
 ## 2. Run Docker Container
 
@@ -34,7 +34,7 @@ docker run -p 3000:3000 your-image-name
 docker run -it your-image-name
 ```
 
----
+
 
 ## 3. Container Logs and Shell
 
@@ -50,7 +50,7 @@ docker logs container-id
 docker exec -it container-id bash
 ```
 
----
+
 
 ## 4. List & Manage Containers
 
@@ -78,7 +78,7 @@ docker stop container-id
 docker rm container-id
 ```
 
----
+
 
 ## 5. Image Management
 
@@ -94,7 +94,7 @@ docker images
 docker rmi image-id
 ```
 
----
+
 
 ## 6. Clean Up
 
@@ -110,7 +110,7 @@ docker container prune
 docker image prune -a
 ```
 
----
+
 
 ## 7. Push to Docker Hub
 
@@ -126,7 +126,7 @@ docker tag your-image yourusername/your-image
 docker push yourusername/your-image
 ```
 
----
+
 
 ## 8. Sample Docker Workflow (Node.js App)
 
@@ -149,12 +149,12 @@ docker build -t my-node-app .
 docker run -p 3000:3000 my-node-app
 ```
 
----
+
 
 ## Quick Cheatsheet
 
 | Task                  | Command                             |
-| --------------------- | ----------------------------------- |
+|  | -- |
 | Build Image           | `docker build -t name .`            |
 | Run Container         | `docker run -p 3000:3000 name`      |
 | List Images           | `docker images`                     |
@@ -162,7 +162,7 @@ docker run -p 3000:3000 my-node-app
 | Remove Container      | `docker rm container-id`            |
 | Enter Container Shell | `docker exec -it container-id bash` |
 
----
+
 
 
 
