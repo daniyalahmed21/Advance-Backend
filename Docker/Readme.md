@@ -151,18 +151,6 @@ docker run -p 3000:3000 my-node-app
 
 
 
-## Quick Cheatsheet
-
-| Task                  | Command                             |
-|  | -- |
-| Build Image           | `docker build -t name .`            |
-| Run Container         | `docker run -p 3000:3000 name`      |
-| List Images           | `docker images`                     |
-| List Containers       | `docker ps -a`                      |
-| Remove Container      | `docker rm container-id`            |
-| Enter Container Shell | `docker exec -it container-id bash` |
-
-
 
 
 
