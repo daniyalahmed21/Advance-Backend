@@ -149,8 +149,37 @@ docker build -t my-node-app .
 docker run -p 3000:3000 my-node-app
 ```
 
+## 9. Container Networking: Making Containers Talk to Each Other
 
+To allow containers to communicate, attach them to the same network.
 
+### Steps:
+
+1.  **Create a network:**
+    ```bash
+    docker network create my_custom_network
+    ```
+
+2.  **Start the backend process with the network attached to it:**
+    ```bash
+    docker run -d -p 3000:3000 --name backend --network my_custom_network image_tag
+    ```
+    *(Note: Replace `image_tag` with the actual tag you used in step 2 or your application's image name)*
+
+3.  **Start Mongo (or any other service) on the same network:**
+    ```bash
+    docker run -d -v volume_database:/data/db --name mongo --network my_custom_network mongo
+    ```
+
+4.  **Check the logs to ensure the DB connection is successful:**
+    ```bash
+    docker logs <container_id>
+    ```
+    *(Replace `<container_id>` with the actual ID or name of your backend container, e.g., `backend`)*
+
+7.  **Try to visit an endpoint and ensure you are able to talk to the database.**
+
+8.  **Optional:** You can remove the port mapping for Mongo since you don't necessarily need it exposed on your machine if only your backend container needs to access it.
 
 
 
