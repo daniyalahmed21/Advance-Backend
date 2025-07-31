@@ -1,12 +1,11 @@
 import express from "express";
-
+import serverConfig from "./config/server.config";
 const app = express();
-const PORT = 3000;
 
 app.get("/", (_, res) => {
   res.send("Hello World!");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+app.listen(serverConfig.PORT, () => {
+  console.log(`Server running at http://localhost:${serverConfig.PORT}`);
 });
