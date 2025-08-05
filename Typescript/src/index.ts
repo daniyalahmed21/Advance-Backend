@@ -1,10 +1,9 @@
-import express from "express";
+import express, { Express } from "express";
 import serverConfig from "./config/server.config";
-const app = express();
+import apiRouter from "./routes";
+const app: Express = express();
 
-app.get("/", (_, res) => {
-  res.send("Hello World!");
-});
+app.use("/api", apiRouter);
 
 app.listen(serverConfig.PORT, () => {
   console.log(`Server running at http://localhost:${serverConfig.PORT}`);
