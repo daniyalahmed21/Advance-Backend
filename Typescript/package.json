@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "prebuild":"npm run lint:fix",
+    "prebuild": "npm run lint:fix",
     "build": "npx tsc",
     "watch": "npx tsc -w",
     "prestart": "npm run build",
@@ -27,9 +27,12 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "@types/ioredis": "^4.28.10",
+    "bullmq": "^5.56.9",
     "concurrently": "^9.2.0",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
+    "ioredis": "^5.7.0",
     "nodemon": "^3.1.10"
   }
 }
