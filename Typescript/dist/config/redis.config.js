@@ -8,12 +8,7 @@ const server_config_1 = __importDefault(require("./server.config"));
 const redisConfig = {
     port: Number(server_config_1.default.REDIS_PORT),
     host: server_config_1.default.REDIS_HOST,
+    maxRetriesPerRequest: null, // <-- THE FIX IS HERE
 };
-const redis = new ioredis_1.default(redisConfig);
-redis.on("connect", () => {
-    console.log("Connected to Redis at", redisConfig.host, ":", redisConfig.port);
-});
-redis.on("error", (err) => {
-    console.error("Redis error", err);
-});
-exports.default = redis;
+const redisConnection = new ioredis_1.default(redisConfig);
+exports.default = redisConnection;

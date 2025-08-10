@@ -4,16 +4,9 @@ import config from "./server.config";
 const redisConfig = {
   port: Number(config.REDIS_PORT),
   host: config.REDIS_HOST,
+  maxRetriesPerRequest: null, // <-- THE FIX IS HERE
 };
 
-const redis = new Redis(redisConfig);
+const redisConnection = new Redis(redisConfig);
 
-redis.on("connect", () => {
-  console.log("Connected to Redis at", redisConfig.host, ":", redisConfig.port);
-});
-
-redis.on("error", (err) => {
-  console.error("Redis error", err);
-});
-
-export default redis;
+export default redisConnection;
